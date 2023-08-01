@@ -4,6 +4,7 @@ import {
   SchemaFile,
   AuthorizationType,
 } from 'aws-cdk-lib/aws-appsync';
+import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 
@@ -46,6 +47,15 @@ export class AppsyncServerlessStack extends Stack {
     lambdaDataSource.createResolver('mutation-resolver', {
       typeName: 'Mutation',
       fieldName: 'createNote',
+    });
+
+    const notesTable = new Table(this, 'notes-api-table', {
+      tableName: 'notes-api-table',
+      billingMode: BillingMode.PAY_PER_REQUEST,
+      partitionKey: {
+        name: 'id',
+        type: AttributeType.STRING,
+      },
     });
   }
 }
