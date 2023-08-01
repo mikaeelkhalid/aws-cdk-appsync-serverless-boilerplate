@@ -2,7 +2,7 @@
   "name": "cdk-appsync-serverless-app",
   "version": "0.1.0",
   "bin": {
-    "cdk-appsync-serverless-app": "bin/cdk-appsync-serverless-app.js"
+    "cdk-appsync-serverless-app": "app/main.js"
   },
   "scripts": {
     "build": "tsc",
