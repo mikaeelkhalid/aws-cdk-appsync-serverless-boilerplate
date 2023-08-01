@@ -3,7 +3,7 @@ import { Note } from './types/Note';
 
 type AppSyncEvent = {
   info: {
-    filedName: string;
+    fieldName: string;
   };
   arguments: {
     noteId: string;
@@ -12,7 +12,7 @@ type AppSyncEvent = {
 };
 
 exports.handler = async (event: AppSyncEvent) => {
-  switch (event.info.filedName) {
+  switch (event.info.fieldName) {
     case 'createNote':
       return await createNote(event.arguments.note);
 
