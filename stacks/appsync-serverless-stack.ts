@@ -57,6 +57,8 @@ export class AppsyncServerlessStack extends Stack {
         type: AttributeType.STRING,
       },
     });
+
+    notesTable.grantFullAccess(notesLambda);
   }
 }
 
