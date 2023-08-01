@@ -1,9 +1,10 @@
-const AWS = require('aws-sdk');
-const docClient = new AWS.DynamoDB.DocumentClient();
+import { DynamoDB } from 'aws-sdk';
+
+const docClient = new DynamoDB.DocumentClient();
 
 export const listNotes = async () => {
   const params = {
-    TableName: process.env.NOTES_TABLE,
+    TableName: process.env.NOTES_TABLE as string,
   };
 
   try {

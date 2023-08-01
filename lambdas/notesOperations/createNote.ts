@@ -1,15 +1,17 @@
-const AWS = require('aws-sdk');
-const docClient = new AWS.DynamoDB.DocumentClient();
+import { DynamoDB } from 'aws-sdk';
 import { Note } from '../types/Note';
+
+const docClient = new DynamoDB.DocumentClient();
 
 export const createNote = async (note: Note) => {
   const params = {
-    TableName: process.env.NOTES_TABLE,
+    TableName: process.env.NOTES_TABLE as string,
     Item: note,
   };
 
   try {
-    await docClient.put(params).promise();
+    const data = await docClient.put(params).promise();
+    console.log('data', data);
     return note;
   } catch (error) {
     console.log('dynamodb err: ', error);
