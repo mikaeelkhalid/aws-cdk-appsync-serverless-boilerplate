@@ -32,6 +32,11 @@ export class AppsyncServerlessStack extends Stack {
       code: Code.fromAsset('lambdas'),
       memorySize: 1024,
     });
+
+    const lambdaDataSource = api.addLambdaDataSource(
+      'lambda-data-source',
+      notesLambda
+    );
   }
 }
 
