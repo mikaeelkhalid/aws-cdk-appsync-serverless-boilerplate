@@ -24,6 +24,14 @@ export class AppsyncServerlessStack extends Stack {
       },
       xrayEnabled: true,
     });
+
+    const notesLambda = new Function(this, 'notes-lambda', {
+      functionName: 'notes-lambda',
+      runtime: Runtime.NODEJS_16_X,
+      handler: 'main.handler',
+      code: Code.fromAsset('lambdas'),
+      memorySize: 1024,
+    });
   }
 }
 
