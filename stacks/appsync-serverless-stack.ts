@@ -37,6 +37,16 @@ export class AppsyncServerlessStack extends Stack {
       'lambda-data-source',
       notesLambda
     );
+
+    lambdaDataSource.createResolver('query-resolver', {
+      typeName: 'Query',
+      fieldName: 'listNotes',
+    });
+
+    lambdaDataSource.createResolver('mutation-resolver', {
+      typeName: 'Mutation',
+      fieldName: 'createNote',
+    });
   }
 }
 
