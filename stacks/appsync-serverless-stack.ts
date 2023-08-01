@@ -4,15 +4,16 @@ import {
   SchemaFile,
   AuthorizationType,
 } from 'aws-cdk-lib/aws-appsync';
+import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 
 export class AppsyncServerlessStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const api = new GraphqlApi(this, 'graphql-api', {
-      name: 'graphql-api',
-      schema: SchemaFile.fromAsset('schema.graphql'),
+    const api = new GraphqlApi(this, 'notes-appsync-api', {
+      name: 'notes-appsync-api',
+      schema: SchemaFile.fromAsset('graphql/schema.graphql'),
       authorizationConfig: {
         defaultAuthorization: {
           authorizationType: AuthorizationType.API_KEY,
