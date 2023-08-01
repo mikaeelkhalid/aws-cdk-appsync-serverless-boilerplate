@@ -5,8 +5,10 @@ import {
   AuthorizationType,
 } from 'aws-cdk-lib/aws-appsync';
 import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
-import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { Runtime } from 'aws-cdk-lib/aws-lambda';
+import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
+import { join } from 'path';
 
 export class AppsyncServerlessStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -26,11 +28,10 @@ export class AppsyncServerlessStack extends Stack {
       xrayEnabled: true,
     });
 
-    const notesLambda = new Function(this, 'notes-lambda', {
+    const notesLambda = new NodejsFunction(this, 'notes-lambda', {
       functionName: 'notes-lambda',
       runtime: Runtime.NODEJS_16_X,
-      handler: 'notesLambda.handler',
-      code: Code.fromAsset('lambdas'),
+      entry: join(__dirname, '../lambdas/notesLambda.ts'),
       memorySize: 1024,
     });
 
