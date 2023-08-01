@@ -59,6 +59,8 @@ export class AppsyncServerlessStack extends Stack {
     });
 
     notesTable.grantFullAccess(notesLambda);
+
+    notesLambda.addEnvironment('NOTES_TABLE', notesTable.tableName);
   }
 }
 
