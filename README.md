@@ -74,17 +74,9 @@ mutation createNote {
 }
 ```
 
-## Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgements
 
-(Any acknowledgements or credits to libraries, tools, or individuals that helped inspire or aid in the development.)
+(Any acknowledgments or credits to libraries, tools, or individuals that helped inspire or aid in the development.)
 
 ---
 
