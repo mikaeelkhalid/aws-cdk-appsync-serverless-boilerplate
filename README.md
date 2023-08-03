@@ -74,10 +74,6 @@ mutation createNote {
 }
 ```
 
-## Acknowledgements
-
-(Any acknowledgments or credits to libraries, tools, or individuals that helped inspire or aid in the development.)
-
 ---
 
 Feel free to adjust or refine as needed!
